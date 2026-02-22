@@ -4,6 +4,8 @@
 " License MIT
 "
 " Credits
+"   Based on Dave Eddy's vimrc
+"   https://github.com/bahamas10/dotfiles
 "   https://github.com/a-lost-social-misfit/
 " ---------------------------------------------
 set nocompatible		" Disable VI Compatibility

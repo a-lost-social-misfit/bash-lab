@@ -73,3 +73,7 @@ exit          # leave (container keeps running)
 colima stop   # stop everything
 colima start  # start again
 ```
+
+## Acknowledgements
+
+- vimrc based on [Dave Eddy's dotfiles](https://github.com/bahamas10/dotfiles)
