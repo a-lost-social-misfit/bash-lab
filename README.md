@@ -12,7 +12,7 @@ Built for learning bash, Vim, and Rust in an isolated, reproducible environment.
 - **shellcheck** - bash linter
 - **ripgrep** - fast grep
 - **bat** - cat with syntax highlighting
-- **htop** - process viewer
+- **btop** - process viewer
 - **man pages** (full, via unminimize)
 - **bash-completion**
 - Git prompt with branch display

@@ -1,10 +1,13 @@
 FROM ubuntu:24.04
 
 ENV TERM=xterm-256color
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
 
 RUN apt-get update && apt-get install -y \
-    vim git curl shellcheck man-db bat htop \
-    build-essential ripgrep bash-completion \
+    vim git curl shellcheck man-db bat btop \
+    locales build-essential ripgrep bash-completion \
+    && locale-gen en_US.UTF-8 \
     && yes | unminimize \
     && rm -rf /var/lib/apt/lists/*
 
