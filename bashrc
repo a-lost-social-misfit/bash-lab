@@ -40,12 +40,6 @@ COLOR256[0]=$(tput setaf 1)   # red (エラー表示用)
 COLOR256[256]=$(tput sgr0)    # reset
 COLOR256[257]=$(tput bold)    # bold
 
-# PROMPT_COLORSに使う色を設定する関数
-# テーマは0-29の整数で指定
-# 例: set_prompt_colors 24  → 青緑系
-#     set_prompt_colors 4   → 青系
-#     set_prompt_colors 14  → シアン系
-#     set_prompt_colors 0   → 赤系
 PROMPT_COLORS=()
 set_prompt_colors() {
     local h=${1:-24}
@@ -76,7 +70,6 @@ PS1_HOST_COLOR=$(tput setaf 10)   # misfit: 明るいグリーン
 # Prompt
 # ============================================================
 
-# gitブランチを取得（printfで色コードをそのまま出力）
 _git_branch_ps1() {
     local branch
     branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
@@ -85,7 +78,6 @@ _git_branch_ps1() {
     [[ -n $branch ]] && printf '%s' "${git_color}(${branch}) ${COLOR256[256]}"
 }
 
-# タイトルバー更新 (Dave Eddy方式)
 _prompt_command() {
     local user=$USER
     local host=${HOSTNAME%%.*}
@@ -94,52 +86,27 @@ _prompt_command() {
     [[ -n $SSH_CLIENT ]] && ssh='[ssh] '
     printf "\033]0;%s%s@%s:%s\007" "$ssh" "$user" "$host" "$pwd"
 }
-PROMPT_COMMAND=_prompt_command
+PROMPT_COMMAND='_prompt_command'
 
-# 直近3階層まで表示
 PROMPT_DIRTRIM=3
 
-# PS1構築 (Dave Eddyの構造 + enokiの色)
-# [(exit code)] user@host dir (git:branch) $
-
-# 終了コード（失敗時のみ赤）
 PS1='$(ret=$?; (($ret!=0)) && echo "\[${COLOR256[0]}\]($ret) \[${COLOR256[256]}\]")'
-
-# user (14: 明るいシアン)
 PS1+='\[${PS1_USER_COLOR}\]\[${COLOR256[257]}\]\u\[${COLOR256[256]}\]'
-
-# @ (13: 明るいマゼンタ)
 PS1+='\[${PS1_AT_COLOR}\]@\[${COLOR256[256]}\]'
-
-# host (10: 明るいグリーン)
 PS1+='\[${PS1_HOST_COLOR}\]\[${COLOR256[257]}\]\h\[${COLOR256[256]}\] '
-
-# cwd（直近のみ）
 PS1+='\[${PROMPT_COLORS[5]}\]\W\[${COLOR256[256]}\] '
-
-# gitブランチ
 PS1+='$(_git_branch_ps1)'
-
-# プロンプト文字
 PS1+='\[${PROMPT_COLORS[0]}\]\$\[${COLOR256[256]}\] '
-
-# タイトルバー（xterm系のみ）
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;\u@\h: \w\a\]$PS1"
-    ;;
-esac
 
 # ============================================================
 # 環境変数
 # ============================================================
 export EDITOR='vim'
 export VISUAL='vim'
-export GREP_COLOR='1;36'
-export HISTCONTROL='ignoredups'
 export PAGER='less'
 export MANPAGER="batcat -l man -p"
 export MANWIDTH=120
+export GREP_COLORS='mt=1;36'
 
 # Support colors in less (Dave Eddy方式)
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 1)
@@ -179,7 +146,7 @@ alias chomd='chmod'
 alias externalip='curl -sS https://ipinfo.io/ip'
 
 # ============================================================
-# Git Aliases (Dave Eddy方式)
+# Git
 # ============================================================
 alias ga='git add . --all'
 alias gb='git branch'
@@ -282,10 +249,5 @@ if ! shopt -oq posix; then
     fi
 fi
 
-# ============================================================
-# 外部ファイル読み込み (Dave Eddy方式)
-# ============================================================
-. ~/.bash_aliases  2>/dev/null || true
-. ~/.bashrc.local  2>/dev/null || true
-
 true
+
