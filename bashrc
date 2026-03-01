@@ -176,7 +176,6 @@ alias gerp='grep'
 alias chomd='chmod'
 
 # ツール
-alias zellij="TERM=xterm-256color zellij"
 alias externalip='curl -sS https://ipinfo.io/ip'
 
 # ============================================================
