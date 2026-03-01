@@ -2,7 +2,7 @@
 #
 # ~/.bashrc
 # Based on Dave Eddy's bashrc (dave@daveeddy.com)
-# Customized for enoki
+# Customized for me
 
 # If not running interactively, don't do anything
 case $- in
@@ -62,9 +62,9 @@ set_prompt_colors() {
 set_prompt_colors 24
 
 # user・@・hostの個別色指定
-PS1_USER_COLOR=$(tput setaf 14)   # enoki: 明るいシアン
-PS1_AT_COLOR=$(tput setaf 13)     # @: 明るいマゼンタ
-PS1_HOST_COLOR=$(tput setaf 10)   # misfit: 明るいグリーン
+PS1_USER_COLOR=$(tput setaf 14)   # 明るいシアン
+PS1_AT_COLOR=$(tput setaf 13)     # 明るいマゼンタ
+PS1_HOST_COLOR=$(tput setaf 10)   # 明るいグリーン
 
 # ============================================================
 # Prompt
