@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # ~/.bashrc
-# Based on Dave Eddy's bashrc (dave@daveeddy.com)
+# Based on Dave Eddy's bashrc
 # Customized for me
 
 # If not running interactively, don't do anything
