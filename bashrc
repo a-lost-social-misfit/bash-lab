@@ -104,7 +104,7 @@ PS1+='\[${PROMPT_COLORS[0]}\]\$\[${COLOR256[256]}\] '
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
-export MANPAGER="bat --paging=always --language=man --style=plain"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 export MANWIDTH=120
 export GREP_COLORS='mt=1;36'
